@@ -5,17 +5,36 @@ class Contact extends Component {
   static propTypes = {
     contact: PropTypes.object.isRequired
   };
+
+  state = {
+    showContactInfo: false
+  }
+
+  // onShowClick = (name) => {
+  //   console.log(this.state);
+  //   console.log(name);
+  // }
+  onShowClick = (e) => {
+    this.setState({showContactInfo: !this.state.showContactInfo })
+    // console.log(this.state.showContactInfo);
+  }
+
   
   render() {
     const {email, name, phone} =  this.props.contact;
+    const { showContactInfo } = this.state;
 
     return (
       <div className="card card-body mb-3">
-        <h4>Name: {name}</h4>
-        <ul className="list-group">
-          <li className="list-group-item">Email: {email}</li>
-          <li className="list-group-item">Phone: {phone}</li>
-        </ul>
+        {/* <h4>Name: {name} <i onClick={this.onShowClick.bind(this,name)} className="fas fa-sort-down"></i></h4> */}
+        <h4>Name: {name} <i onClick={this.onShowClick} className="fas fa-sort-down"></i></h4>
+        {showContactInfo ? 
+          (<ul className="list-group">
+            <li className="list-group-item">Email: {email}</li>
+            <li className="list-group-item">Phone: {phone}</li>
+          </ul>)
+          : null
+        }
       </div>
     )
   }
