@@ -9,6 +9,7 @@ class App extends Component {
         <p>The App Component</p>
         <p>Creating new component</p>
         <Contact />
+        less 2
       </div>
     );
   }
